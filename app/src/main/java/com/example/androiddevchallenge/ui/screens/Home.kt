@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.data.Puppy
 import com.example.androiddevchallenge.ui.components.ActionBar
 import com.example.androiddevchallenge.ui.components.PuppyCard
+import com.example.androiddevchallenge.ui.components.PuppyList
 import com.example.androiddevchallenge.ui.theme.PuppyHomeTheme
 
 /**
@@ -27,33 +28,20 @@ import com.example.androiddevchallenge.ui.theme.PuppyHomeTheme
 @ExperimentalFoundationApi
 @Composable
 fun Home(onClicked: (Puppy) -> Unit) {
-    Scaffold (
+    Scaffold(
         modifier = Modifier.fillMaxWidth(),
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.background,
     ) {
+        TopAppBar(
+            title = {
+                Text(
+                    "Puppy Home",
+                    color = MaterialTheme.colors.onPrimary,
+                )
+            },
+        )
         Column {
-            TopAppBar(
-                title = {
-                    Text(
-                        "Puppy Home",
-                        color = MaterialTheme.colors.onPrimary,
-                    )
-                },
-            )
-            val puppies = remember {
-                List(10) {
-                    Puppy()
-                }
-            }
-            LazyVerticalGrid(
-                cells = GridCells.Adaptive(minSize = 128.dp)
-            ) {
-                items(puppies) { puppy ->
-                    PuppyCard(puppy) {
-                        onClicked(puppy)
-                    }
-                }
-            }
+            PuppyList(onClicked = onClicked)
         }
     }
 }
@@ -62,7 +50,7 @@ fun Home(onClicked: (Puppy) -> Unit) {
 @Preview
 @Composable
 fun PreviewHomeScreen() {
-    PuppyHomeTheme() {
-        Home(onClicked = { TODO()})
+    PuppyHomeTheme {
+        Home(onClicked = { TODO() })
     }
 }

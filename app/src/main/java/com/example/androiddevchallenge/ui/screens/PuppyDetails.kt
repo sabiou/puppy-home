@@ -30,33 +30,67 @@ import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 @ExperimentalStdlibApi
 @Composable
 fun PuppyDetails(
-    puppy: Puppy?) {
+    puppy: Puppy?
+) {
     Scaffold(
-        topBar = {
-            TopAppBar(navigationIcon = {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "back")
-            }) {
-
-            }
-        },
-        bottomBar = {
-            Button(
-                onClick = {},
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)) {
-                Text(
-                    text = "Adopt Me",
-                    modifier = Modifier.padding(10.dp)
-                )
-            }
-        },
         content = {
             if (puppy != null) {
-                PuppyDetailsContent(puppy = puppy)
+                //PuppyDetailsContent(puppy = puppy)
+                DetailsSCreen(puppy = puppy)
             }
         }
     )
+}
+
+@ExperimentalStdlibApi
+@Composable
+fun DetailsSCreen(puppy: Puppy) {
+    Column {
+        CoilImage(
+            data = puppy.imageUrl,
+            modifier = Modifier
+                .height(250.dp)
+                .fillMaxWidth(),
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth
+        )
+        Text(
+            text = puppy.name,
+            style = puppyHomeTypography.h1,
+            modifier = Modifier.padding(start = 10.dp)
+        )
+        MaterialChip(
+            label = puppy.gender.toString().lowercase(),
+            onClick = {
+                // do nothing
+            },
+            modifier = Modifier.padding(start = 10.dp, top = 5.dp),
+        )
+
+        Text(
+            text = puppy.age,
+            style = typography.subtitle1,
+            modifier = Modifier
+                .padding(start = 8.dp, top = 10.dp),
+        )
+
+        Text(
+            text = puppy.bio,
+            style = typography.subtitle1,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 8.dp, top = 16.dp),
+        )
+
+        Button(
+            onClick = { },
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
+        ) {
+            Text("Adopt ${puppy.name}")
+        }
+    }
 }
 
 @ExperimentalStdlibApi
@@ -111,7 +145,10 @@ fun PuppyDetailsContent(puppy: Puppy) {
 @Preview
 @Composable
 fun PreviewPuppyDetails() {
-    PuppyHomeTheme {
+    /*PuppyHomeTheme {
         PuppyDetails( puppy = Puppy())
+    }*/
+    PuppyHomeTheme {
+        DetailsSCreen(puppy = Puppy())
     }
 }

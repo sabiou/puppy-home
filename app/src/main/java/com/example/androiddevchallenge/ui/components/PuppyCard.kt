@@ -43,10 +43,9 @@ fun PuppyCard(
             .clickable {
                 onClick(puppy)
             }
-            .clip(RoundedCornerShape(8.dp)),
-        border = BorderStroke(2.dp, Color.LightGray)
+            .clip(RoundedCornerShape(16.dp))
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column {
             CoilImage(
                 data = puppy.imageUrl,
                 contentDescription = null,
@@ -55,13 +54,15 @@ fun PuppyCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .size(128.dp)
-                    .clip(MaterialTheme.shapes.medium)
                     .background(MaterialTheme.colors.primary)
             )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
+                    .padding(top = 8.dp,
+                        bottom = 8.dp,
+                        start = 8.dp,
+                        end = 8.dp)
             ) {
 
                 Text(

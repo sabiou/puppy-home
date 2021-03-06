@@ -24,7 +24,7 @@ fun PuppyList(
     onClicked: (Puppy) -> Unit
 ) {
     val puppies = remember {
-        List(10) {
+        List(30) {
             Puppy()
         }
     }
