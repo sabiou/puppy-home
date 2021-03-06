@@ -32,6 +32,7 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 /**
  * Created by Farouk on 27/02/2021.
  */
+@ExperimentalStdlibApi
 @Composable
 fun PuppyCard(
     puppy: Puppy,
@@ -56,36 +57,26 @@ fun PuppyCard(
                     .size(128.dp)
                     .background(MaterialTheme.colors.primary)
             )
-            Row(
+            Text(
+                text = puppy.name,
+                style = puppyHomeTypography.h6,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp,
-                        bottom = 8.dp,
-                        start = 8.dp,
-                        end = 8.dp)
-            ) {
-
-                Text(
-                    text = puppy.name,
-                    style = puppyHomeTypography.h6,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 8.dp),
-                )
-                Icon(
-                    imageVector = when (puppy.gender) {
-                        Puppy.Gender.MALE -> Icons.Rounded.Male
-                        Puppy.Gender.FEMALE -> Icons.Rounded.Female
-                    },
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.End)
-                )
-            }
+                    .padding(horizontal = 8.dp, vertical = 8.dp),
+            )
+            MaterialChip(
+                label = puppy.gender.toString().lowercase(),
+                onClick = {
+                    // do nothing
+                },
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 5.dp)
+                    .background(Color.White)
+            )
         }
     }
 }
 
+@ExperimentalStdlibApi
 @Preview
 @Composable
 fun PreviewPuppyCard() {

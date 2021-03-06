@@ -94,54 +94,6 @@ fun DetailsSCreen(puppy: Puppy) {
 }
 
 @ExperimentalStdlibApi
-@Composable
-fun PuppyDetailsContent(puppy: Puppy) {
-    LazyColumn(
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        item {
-            CoilImage(
-                data = puppy.imageUrl,
-                modifier = Modifier
-                    .height(250.dp)
-                    .fillMaxWidth(),
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = puppy.name,
-                style = puppyHomeTypography.h1,
-                modifier = Modifier.padding(start = 10.dp)
-            )
-            MaterialChip(
-                label = puppy.gender.toString().lowercase(),
-                onClick = {
-                    // do nothing
-                },
-                modifier = Modifier.padding(start = 10.dp, top = 5.dp),
-            )
-
-            Text(
-                text = puppy.age,
-                style = typography.subtitle1,
-                modifier = Modifier
-                    .padding(start = 8.dp, top = 10.dp),
-            )
-
-            Text(
-                text = puppy.bio,
-                style = typography.subtitle1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 8.dp, top = 16.dp),
-            )
-        }
-    }
-}
-
-@ExperimentalStdlibApi
 @Preview
 @Composable
 fun PreviewPuppyDetails() {

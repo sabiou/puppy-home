@@ -23,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.data.Puppy
 import com.example.androiddevchallenge.ui.components.PuppyList
+import com.example.androiddevchallenge.ui.screens.Home
 import com.example.androiddevchallenge.ui.screens.PuppyDetails
 
 @ExperimentalStdlibApi
@@ -31,7 +32,7 @@ import com.example.androiddevchallenge.ui.screens.PuppyDetails
 fun SetupNavigation(navHostController: NavHostController) {
     NavHost(navHostController, startDestination = Destinations.HOME.route) {
         composable(Destinations.HOME.route) {
-            PuppyList { puppy ->
+            Home { puppy ->
                 navigateToPuppyDetails(navController = navHostController, puppy = puppy)
             }
         }

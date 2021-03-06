@@ -32,9 +32,7 @@ class MainActivity : AppCompatActivity() {
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
             PuppyHomeTheme() {
                 MyApp()
