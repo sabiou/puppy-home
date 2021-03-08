@@ -12,6 +12,7 @@
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
+Learning how to build UI with Jetpack Compose
 
 
 ## :camera_flash: Screenshots
